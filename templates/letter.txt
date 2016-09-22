@@ -1,0 +1,18 @@
+Hello,
+
+I am a 3rd year student pursuing Electronics and Communication Engineering at Indian School of Mines(ISM), Dhanbad. I am writing to apply for summer internship at <%= email.company %> as an Android Application Developer or Backend Developer.
+
+Previously I have worked as an Android Application Developer intern at Scribbler Notebooks, Bangalore during May-June 2015. Also I have an app in Google Play Store (https://play.google.com/store/apps/details?id=architect.jazzy.medicinereminder).
+
+Being a fresher, I am searching for opportunities to learn. Working with you would be a great opportunity for me to learn aspects of working in an organization.
+
+Attaching my CV for your reference. Looking forward to work and learn with you.
+
+
+Yours Sincerely
+Jibin Sabu Mathews
+Indian Institute of Technology (ISM), Dhanbad
+Contact: +91-8877073355
+Email: jibinmathews7@gmail.com  |  jibinmathews7@ece.ism.ac.in
+CV: https://goo.gl/PnbC69
+
