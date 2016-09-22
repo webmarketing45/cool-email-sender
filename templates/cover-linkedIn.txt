@@ -1,0 +1,14 @@
+Hello,
+
+This letter is to express my interest in your posting on LinkedIn for a Software Developer. As a final year student of Indian Institute of Technology (IIT (ISM)), Dhanbad pursuing B.Tech (Hons.) Electronics and Communication Engineering with minor in Computer Science Engineering, I am seeking job options in the field of Software development.
+
+I enjoy being challenged and working on projects that require me to work outside my comfort and knowledge set, as continuing to learn new languages and development techniques are important to me. I stand outside the crowd of software engineers because instead of focussing more on competitive coding, I have worked on real life projects involving practical aspects of programming.
+
+Maybe I won't be able to write an optimised Quick Sort (Bcz I know there is a sort function in almost every language)  or maybe I won't be able to find the a node in AVL tree in most optimised way (Google knows it)...BUT..!! I know where to use Ruby and where to use JavaScript in practical systems, which database to use, how much space to use, how to secure them or  how to host an app or how to optimize the JS code to match the speed of C++. I can accomplish the work in some interesting way. Quickly too. Well...I innovate beyond gcc sort_function_again.cpp...
+
+Previously I have worked with two companies as a Software Engineer during my internships - Scribbler Notebooks and Rentomojo.com. I have also been involved in open source projects during my course of engineering.
+
+I’ve attached a copy of my CV that details my projects and experience in software development. I can be reached anytime via my cell phone, +91-8877073355 or via email at jibinmathews7@gmail.com. I am confident that I can be the candidate you are seeking. Thank you for your time—I look forward to learning more about this opportunity!
+
+
+
