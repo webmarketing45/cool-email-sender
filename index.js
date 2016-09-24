@@ -5,12 +5,12 @@ var ejs = require('ejs');
 var inquirer = require('inquirer');
 var path = require('path');
 var chalk = require('chalk');
-
+//After converting html if lower banner placement problem arrives then remove float from all inline css
 var user = "jibinmathews7@gmail.com";
 var password = process.env.MAIL_PASSWORD;
 
 process.on('unhandledRejection', (reason, p) => {
-    console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
+  console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
 });
 
 process.on('unhandledException', (error, m)=> {
@@ -33,13 +33,17 @@ inquirer.prompt([{
 },{
   name: 'email',
   message: "Receiver Email: ",
-  validate: function(ip){
+  validate: function(ips){
     var done = this.async();
-    if(ip.split('@').length!==2){
-      return done("Invalid email id", false);
-    }
-    if(ip.split('@')[1].split('.').length<=1){
-      return done("Invalid email id");
+    var emails = ips.split(',');
+    for(var ip of emails){
+      ip = ip.trim();
+      if(ip.split('@').length!==2){
+        return done("Invalid email id", false);
+      }
+      if(ip.split('@')[1].split('.').length<=1){
+        return done("Invalid email id");
+      }
     }
     return done(null, true);
   }
@@ -57,6 +61,9 @@ inquirer.prompt([{
     return done(null, true);
   }
 },{
+  name: "position",
+  message: "What role are you applying for? "
+},{
   type: "list",
   name: "template",
   choices: ['LinkedIn Listing - Cover Letter', 'Standard Cover Letter'],
@@ -68,21 +75,39 @@ inquirer.prompt([{
   console.log(chalk.red('------------------------------------------'));
   if(!answers.name){
     answers.name = "";
+  }else{
+    answers.name = " "+answers.name;
+  }
+  if(!answers.position || answers.position.length<=3){
+    answers.position = "Software Developer";
+  }
+  if(answers.email.indexOf(',')!==-1){
+    answers.email = answers.email.split(',');
+    for(var i=0;i<answers.email.length;i++){
+      answers.email[i] = answers.email[i].trim();
+    }
+    answers.name = "";
+  }
+  if(answers.company){
+    answers.company = " at "+answers.company;
   }
   var file = "letter";
   if(answers.template==="LinkedIn Listing - Cover Letter"){
     file = "cover-linkedIn";
   }
+  // var file = "old";
   var textContent = fs.readFileSync(path.join(__dirname, 'templates', file+".txt")).toString();
-  ejs.renderFile(path.join(__dirname, 'templates', file+".html"),{email: answers},{}, function(err, str){
+  textContent = textContent.replace(/{{% name %}}/g, answers.name);
+  // var textContent = "";
+  ejs.renderFile(path.join(__dirname, 'templates', file+"-converted.html"),{email: answers},{}, function(err, str){
     var mailOptions = {
       from: '"Jibin Mathews" <jibinmathews7@gmail.com>', // sender address
       to: answers.email, // list of receivers
       bcc: 'jibinmathews7@gmail.com',
       subject: answers.subject, // Subject line
-      text: textContent,
       html: str // html body
     };
+    fs.writeFileSync('./sent.html', str);
     inquirer.prompt([{
       type: 'confirm',
       name: "send",

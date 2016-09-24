@@ -1,4 +1,4 @@
-Hello,
+Hello {{% name %}},
 
 This letter is to express my interest in your posting on LinkedIn for a Software Developer. As a final year student of Indian Institute of Technology (IIT (ISM)), Dhanbad pursuing B.Tech (Hons.) Electronics and Communication Engineering with minor in Computer Science Engineering, I am seeking job options in the field of Software development.
 
