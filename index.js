@@ -97,7 +97,7 @@ inquirer.prompt([{
   }
   // var file = "old";
   var textContent = fs.readFileSync(path.join(__dirname, 'templates', file+".txt")).toString();
-  textContent = textContent.replace(/{{% name %}}/g, answers.name);
+  textContent = textContent.replace(/<%= email.name %>/g, answers.name).replace(/<%= email.position %>/g,answers.position).replace(/<%= email.company %>/g, answers.company);
   // var textContent = "";
   ejs.renderFile(path.join(__dirname, 'templates', file+"-converted.html"),{email: answers},{}, function(err, str){
     var mailOptions = {
@@ -105,6 +105,7 @@ inquirer.prompt([{
       to: answers.email, // list of receivers
       bcc: 'jibinmathews7@gmail.com',
       subject: answers.subject, // Subject line
+      text: textContent,
       html: str // html body
     };
     fs.writeFileSync('./sent.html', str);
