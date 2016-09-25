@@ -69,6 +69,10 @@ inquirer.prompt([{
   choices: ['LinkedIn Listing - Cover Letter', 'Standard Cover Letter'],
   default: 1,
   message: "Which template to use? "
+},{
+  name: "temporaryTemplate",
+  default: '',
+  message: "Any other template apart from current specified?"
 }]).then(function(answers){
   console.log(chalk.red("----------------Answers------------------"));
   console.log(answers);
@@ -95,6 +99,9 @@ inquirer.prompt([{
   if(answers.template==="LinkedIn Listing - Cover Letter"){
     file = "cover-linkedIn";
   }
+  if(answers.temporaryTemplate){
+    file = answers.temporaryTemplate;
+  }
   // var file = "old";
   var textContent = fs.readFileSync(path.join(__dirname, 'templates', file+".txt")).toString();
   textContent = textContent.replace(/<%= email.name %>/g, answers.name).replace(/<%= email.position %>/g,answers.position).replace(/<%= email.company %>/g, answers.company);
@@ -108,7 +115,7 @@ inquirer.prompt([{
       text: textContent,
       html: str // html body
     };
-    fs.writeFileSync('./sent.html', str);
+    // fs.writeFileSync('./sent.html', str);
     inquirer.prompt([{
       type: 'confirm',
       name: "send",
