@@ -141,7 +141,7 @@ function sendEmail(answers){
       type: 'confirm',
       name: "send",
       default: false,
-      message: "Confirm sending email to: "+chalk.yellow(answers.name+" <"+answers.email+"> of "+answers.company)
+      message: "Confirm sending email to: "+chalk.yellow(answers.name+" <"+answers.email+"> of "+answers.company.replace("at", ""))
     }]).then(function(sendConfirmation){
       console.log(chalk.red("-----------Send Confirmation--------------"));
       console.log(sendConfirmation);
